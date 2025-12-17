@@ -64,7 +64,8 @@ export default function UserList() {
                         <td>{u.email}</td>
                         <td>{u.city}</td>
                         <td className=''>
-                            <button type="button" class="btn btn-primary ">Show</button>
+                           {/* Add show profile link  */}
+                            <Link className='btn btn-primary' to ={`/users/${u.id}`}> Show</Link>
                              
                         </td>
                     </tr>

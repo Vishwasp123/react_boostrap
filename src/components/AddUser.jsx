@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import {Button, Card, CardBody, CardFooter, Col, Form, FormGroup, Input, Label, Container, InputGroup, Row} from "reactstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link } from "react-router-dom";
+
 
 
 function AddUser(props) {
@@ -152,10 +153,7 @@ function AddUser(props) {
               <Button type="submit" className="btn btn-info">
               Save
               </Button>
-            
-              <Button type="button" className="btn btn-secondary ms-2">
-              Cancel
-              </Button>
+              <Link className="btn btn-secondary ms-2" to="/">Back</Link>          
             </Form>        
           </CardBody>
         

@@ -23,6 +23,11 @@ function Dashboard() {
               {/* add link add user in link users */}
               <Link className="nav-link active" aria-current="page" to="/userList" >Users</Link>
             </li>
+
+            <li className="nav-item">
+              {/* add link add user in link users */}
+              <Link className="nav-link active" aria-current="page" to="/api_user" >CreateUser</Link>
+            </li>
           </ul>
         </div>
       </div>
