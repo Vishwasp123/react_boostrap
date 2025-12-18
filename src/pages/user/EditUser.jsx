@@ -55,7 +55,7 @@ function EditUser() {
         onChange={onChange}
         onSubmit={UpdateUser}
         title="Edit User Details"
-        submitText="Update ugugugugugug"
+        submitText="Update"
         
         />
   )

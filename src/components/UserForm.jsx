@@ -51,6 +51,11 @@ const UserForm = ({
                                     onChange={onChange}
                                />
 
+                                <Label>Address</Label>
+                               <Input  className="mb-3" name="address" value={user.address} 
+                                    onChange={onChange}
+                               />
+
                                <Label>City</Label>
                                <Input  className="mb-3" name="city" value={user.city} 
                                     onChange={onChange}
