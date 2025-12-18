@@ -16,3 +16,22 @@ The React Compiler is currently not compatible with SWC. See [this issue](https:
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 # react_bootstrap
 # react_boostrap
+
+
+
+isme api ko service file ke handle kiya he 
+components ke userlist ke user ka data show kar rahe he user components/userlist ; 
+
+userform :- 
+ko partial banaya he edit or create ke liye use form ko bhi pages ke andar redirect kar rahe he pages/user/AddUsers and pages/user/edit 
+
+profile :- 
+show user id specific id base data 
+including crud 
+
+api :- 
+services file user ki sabhi api user file me 
+
+backend ke liye rails use kiya he 
+rails project: user_data
+
