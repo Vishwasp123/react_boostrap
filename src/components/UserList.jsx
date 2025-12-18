@@ -1,5 +1,6 @@
 import React , {useState, useEffect} from 'react'
 import axios from 'axios';
+import { deleteUser } from '../services/userApi';
 
 // uselocation used for back button not show in dashboar 
 import { Link, useLocation } from 'react-router-dom';
@@ -8,8 +9,8 @@ import { Link, useLocation } from 'react-router-dom';
 export default function UserList() {
 
 
-     const localtion = useLocation();  //fetch current url 
-     const showBack = localtion.pathname === "/userList";
+    const localtion = useLocation();  //fetch current url 
+    const showBack = localtion.pathname === "/userList";
 
     const [users, setUsers] = useState([]); 
     const [loading, setLoding] = useState(true)
@@ -28,6 +29,24 @@ export default function UserList() {
     }, []);
 
 
+    // handle delete add karna 
+
+    const handleDelete = async (id) => {
+      const confirmDelete = window.confirm("Are you sure you want to delete this user?");
+      
+      if(!confirmDelete) return
+
+      try{
+        await deleteUser(id); //service api call 
+        alert("User delete suceefully")
+
+        setUsers(users.filter(user => user.id !== id)); 
+      } catch (error) {
+        console.error(error); 
+        alert("Failed to delete user");
+      }
+
+    };
 
   return (
     <>
@@ -66,6 +85,11 @@ export default function UserList() {
                         <td className=''>
                            {/* Add show profile link  */}
                             <Link className='btn btn-primary' to ={`/users/${u.id}`}> Show</Link>
+                            {/* Add edit link edit user details  */}
+                            <Link className='btn btn-warning mx-2' to={`/users/update/${u.id}`}> Edit</Link>
+
+                            {/* delete user  */}
+                            <Link className='card-link fs-5  btn btn-danger'  onClick={() => handleDelete(u.id)} >Delete</Link>
                              
                         </td>
                     </tr>

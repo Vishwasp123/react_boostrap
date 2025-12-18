@@ -22,12 +22,34 @@ export const profileUser = async (id) => {
 }
 
 
-export const editUser = async (id) => {
-    console.log("fetching id:", id)
+export const getUser = async(id) => {
+    console.log("user url details:", `${API_BASE_URL}/users/${id}`)
+    const res = await axios.get(`${API_BASE_URL}/users/${id}`);
+    console.log("resposne get api djfhsdfhsdf", res)
+    return res.data
+    console.log("dsfsdfsdfsdfsdf", res.data)
+}
 
-    const response = await axios.patch(
-        `${API_BASE_URL}/users/${id}`,
-    ); 
+
+export const editUser = async (id, userData) => {
+  console.log("fetching id:", id);
+  console.log("users data patch api:", userData);
+
+  const response = await axios.patch(
+    `${API_BASE_URL}/users/update/${id}`,
+    userData 
+  );
+
+  return response.data;
+};
+
+
+export const deleteUser = async (id) => {
+    console.log("Delete user id:", id);
+    const response = await axios.delete(
+       `${API_BASE_URL}/users/destroy/${id}`
+    )
+     
     return response.data
 }
 

@@ -1,6 +1,9 @@
 import React , {useEffect, useState}from 'react'
 import {profileUser} from '../../services/userApi'
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link , useNavigate} from "react-router-dom";
+import { deleteUser } from '../../services/userApi';
+	
+
 
 
 function profile() {
@@ -9,6 +12,7 @@ function profile() {
 	
 	const[user, setUser] = useState(null)
 	
+	const navigate = useNavigate() // redirect ke liye use hota he
 	
 	useEffect(() => {
 		profileUser(id)
@@ -22,10 +26,27 @@ function profile() {
 	if(!user) {
 		return <p className='text-center'> Loading user profile ......</p>
 	}
-	
-	
-	
-	
+
+
+	// Delete handler
+
+	const handleDelete = async (id) => {
+		console.log("id show ho rahi he kya console par", id)
+		try {
+			await deleteUser(id); //Api call kari delete user vali 
+			alert("Profile  delete suceffully");
+
+			//delete ke bad redirect
+			navigate("/");
+			
+		} catch (error) {
+			console.error(error);
+			alert("failed to delete profile")
+		}
+	}; 
+
+	if(!user) return <p>Loading...</p>
+
 	return(
 		<>	
 			<div className="container d-flex flex-column align-items-center mt-4">
@@ -72,7 +93,8 @@ function profile() {
 
 						
 						 {/* add edit link in show page because id it already present  */}
-						<Link className='card-link fs-5' to={`/users/update/${id}`}>Edit</Link>
+						<Link className='card-link  text-warning fs-5' to={`/users/update/${id}`}>Edit</Link>
+						<Link className='card-link fs-5 text-danger'  onClick={() => handleDelete(id)} >Delete</Link>
 					</div>
 				</div>
 			</div>
